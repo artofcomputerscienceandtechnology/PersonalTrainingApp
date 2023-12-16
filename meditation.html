@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Breath Meditation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link rel="icon" href="./.png">
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    
+	 
+    <div id="mainArea">
+        <h1>Meditation App</h1>
+		 
+		<input id="timeInput" type="text" placeholder="seconds"></input><br>
+		
+		<canvas id="myCanvas" height="500" width="500"></canvas>
+		
+		<button onclick="startMeditation()">Level 1</button>
+		<button onclick="startMeditation()">Level 2</button>
+		<button onclick="startMeditation()">Level 3</button>
+		<pre> 
+    </div> 
+	
+	
+<script>
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillStyle = "blue";
+
+let seconds = 0;
+let x = 0;
+
+let inhale = true;
+
+function startMeditation()
+{	
+	ctx.fillStyle = "skyblue";
+	ctx.fillRect(0, 0, 500, 500);
+
+	ctx.fillStyle = "blue";
+	ctx.fillRect(100, 200, 200, 100);
+	
+	ctx.fillStyle = "purple";
+	ctx.fillRect(110, 200,seconds*20, 100);
+	
+	
+	
+	ctx.fillStyle = "blue";
+	ctx.fillText(seconds, 10, 50); 
+	
+	if (inhale == true)
+	{
+		ctx.fillText("Inhale", 100, 50); 
+	}
+	else
+	{
+		ctx.fillText("Exhale", 100, 50); 
+	}
+	
+	console.log(seconds);
+	seconds++;
+	if (seconds >= 10)
+	{
+		seconds = 0;
+		inhale = !inhale;
+	}
+}
+
+const intervalID = setInterval(startMeditation, 1000, "Parameter 1", "Parameter 2");
+
+function myCallback(a, b) {
+  // Your code here
+  // Parameters are purely optional.
+  console.log(a);
+  console.log(b);
+}
+
+
+</script>
+</body>
+</html>
+
+
+
